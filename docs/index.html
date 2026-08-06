@@ -6,7 +6,7 @@
   <title>Oxygen-TryOn — Any-item Virtual Try-On</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --ink: #101114; --muted: #6c6f76; --line: #e4e5e8; --blue: #2369f5; --paper: #fafafa; }
     * { box-sizing: border-box; }
@@ -14,33 +14,33 @@
     body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: Manrope, sans-serif; }
     a { color: inherit; text-decoration: none; }
     .nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 92px; padding: 0 clamp(32px, 6vw, 96px); border-bottom: 1px solid rgba(16,17,20,.08); background: rgba(250,250,250,.86); backdrop-filter: blur(16px); }
-    .logo { font-weight: 800; font-size: 32px; letter-spacing: -.09em; }
-    .logo span { color: var(--blue); }
+    .logo { font-weight: 800; font-size: 28px; letter-spacing: -.02em; line-height: 1; }
+    .logo span { display: inline-block; vertical-align: baseline; background: linear-gradient(90deg, #2369f5, #6ba3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .nav-links { display: flex; align-items: center; gap: 26px; font-size: 13px; font-weight: 600; }
     .nav-links a:not(.github) { color: var(--muted); }
     .github { padding: 10px 15px; border-radius: 8px; color: #fff; background: var(--ink); }
     .hero { position: relative; isolation: isolate; min-height: 580px; padding: 68px clamp(32px, 6vw, 96px) 58px; overflow: hidden; background: #1e355f; color: #fff; text-align: left; }
     .hero::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgba(15,35,75,.88) 0%, rgba(18,42,86,.72) 38%, rgba(31,78,137,.2) 74%, rgba(38,100,181,.16) 100%); }
     .hero::after { position: absolute; z-index: 3; inset: auto 0 0; height: 2px; background: linear-gradient(90deg, transparent, #5d9aff, transparent); content: ""; animation: sweep 4s ease-in-out infinite; }
-    .hero-mosaic { position: absolute; z-index: 0; inset: 0; display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 2px; background: #eef2f8; }
-    .hero-mosaic img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; background: #eef2f8; filter: saturate(.92) brightness(.92); }
+    .hero-mosaic { position: absolute; z-index: 0; inset: 0; display: grid; grid-template-columns: 1fr 1fr 1.15fr 1.15fr; grid-template-rows: minmax(0, 1fr); gap: 2px; background: #eef2f8; }
+    .hero-mosaic img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; background: #eef2f8; filter: saturate(.92) brightness(.92); }
     .hero > :not(.hero-mosaic) { position: relative; z-index: 2; }
-    .eyebrow { font: 500 11px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--blue); }
+    .eyebrow { font: 500 11px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.92); }
     .section-label { font: 500 clamp(24px, 3vw, 38px) "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-    h1 { position: relative; max-width: 820px; margin: 24px 0 32px; font-size: clamp(40px, 5.6vw, 76px); line-height: .98; letter-spacing: -.075em; }
+    h1 { position: relative; max-width: 900px; margin: 24px 0 32px; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.05; letter-spacing: -.015em; word-spacing: .08em; }
     .hero-title { color: #fff; animation: none !important; }
     .title-line { display: block; white-space: nowrap; }
-    .hero-title .char { display: inline-block; opacity: 0; transform: translateY(.65em) rotate(2deg); }
-    .hero-title.animate .char { animation: titleChar .48s cubic-bezier(.2,.75,.2,1) forwards; animation-delay: calc(var(--char-index) * 25ms + 180ms); }
+    .hero-title .char { display: inline-block; opacity: 0; filter: blur(10px); transform: translateY(28px) scale(.96); }
+    .hero-title.animate .char { animation: titleWord .7s cubic-bezier(.16,1,.3,1) forwards; animation-delay: calc(var(--char-index) * 70ms + 120ms); }
     h1 em { font-style: normal; color: var(--blue); animation: accentGlow 3s ease-in-out infinite; }
     .intro { position: relative; max-width: 650px; margin: 0 auto; color: #51545b; font-size: clamp(16px, 1.8vw, 20px); line-height: 1.65; }
     .hero .intro { max-width: 610px; margin: 0; color: rgba(255,255,255,.82); font-size: 18px; }
     .actions { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; max-width: 720px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.25); }
     .button { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px; font-size: 14px; font-weight: 700; transition: transform .25s, box-shadow .25s; }
     .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16,17,20,.13); }
-    .button.primary { color: #fff; background: var(--ink); }
-    .hero .button:not(.primary):not(.disabled) { border-color: rgba(255,255,255,.8); color: #fff; }
-    .hero .button.disabled { border-color: rgba(255,255,255,.16); color: rgba(255,255,255,.45); }
+    .hero .button { border-color: rgba(255,255,255,.85); color: #fff; background: rgba(255,255,255,.12); }
+    .hero .button:hover { background: rgba(255,255,255,.22); box-shadow: 0 10px 20px rgba(0,0,0,.2); }
+    .hero .button.disabled { border-color: rgba(255,255,255,.16); color: rgba(255,255,255,.45); background: transparent; }
     .button.disabled { border-color: var(--line); color: #a5a7ad; cursor: default; }
     .button.disabled:hover { transform: none; box-shadow: none; }
     section { padding: 105px clamp(24px, 5vw, 80px); scroll-margin-top: 92px; }
@@ -52,7 +52,7 @@
     .key-point { display: flex; min-height: 150px; padding: 24px 20px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 12px; background: #fff; text-align: center; transition: transform .25s ease, box-shadow .25s ease; }
     .key-point:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(16,17,20,.08); }
     .key-point::before { display: grid; width: 24px; height: 24px; margin-bottom: 13px; place-items: center; border-radius: 50%; background: #eaf1ff; color: var(--blue); content: "✦"; font-size: 11px; }
-    .key-point b { display: block; margin-bottom: 8px; font-size: 14px; }
+    .key-point b { display: block; margin-bottom: 10px; font-family: Fraunces, "Times New Roman", serif; font-size: 18px; font-weight: 600; font-optical-sizing: auto; letter-spacing: -.03em; line-height: 1.2; background: linear-gradient(120deg, #101114 12%, #1a4fd6 62%, #2369f5 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .key-point p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
     .single-stack { display: grid; gap: 16px; }
     .gallery-section { position: relative; overflow: hidden; background: linear-gradient(135deg, #f3f6fd 0%, #fafafa 48%, #edf4ff 100%); }
@@ -87,12 +87,11 @@
     .image-modal .modal-nav { top: 50%; right: auto; width: 48px; height: 48px; transform: translateY(-50%); font-size: 32px; }
     .image-modal .previous { left: 24px; }
     .image-modal .next { right: 24px; }
-    #authors .section-label { color: var(--ink); font-family: Manrope, sans-serif; font-size: clamp(34px, 5vw, 62px); font-weight: 800; letter-spacing: -.07em; }
     .authors-content { max-width: 960px; margin: 0 auto; }
-    .author-block { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 30px 0; border-top: 1px solid var(--line); }
+    .author-block { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: center; padding: 30px 0; border-top: 1px solid var(--line); }
     .author-block:first-child { border-top: 0; }
-    .author-block b { display: block; margin: 2px 0 0; color: var(--blue); font: 500 11px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
-    .author-block p { margin: 0; color: #282b31; font-size: 17px; line-height: 1.8; }
+    .author-block b { display: block; margin: 0; color: var(--blue); font: 500 15px/1.85 "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .author-block p { margin: 0; color: #282b31; font: 400 18px/1.85 "Times New Roman", Times, serif; }
     .bibtex-wrap { position: relative; }
     .bibtex { margin: 0; padding: 22px 94px 22px 22px; overflow-wrap: anywhere; border-left: 3px solid var(--blue); background: #f0f4fc; color: #26303e; font: 12px/1.7 "DM Mono", monospace; white-space: pre-wrap; }
     .copy-bibtex { position: absolute; z-index: 1; top: 12px; right: 12px; padding: 9px 13px; border: 0; border-radius: 0; background: var(--ink); color: #fff; cursor: pointer; font: 600 11px Manrope, sans-serif; transition: transform .2s ease, background .2s ease; }
@@ -114,7 +113,7 @@
     @keyframes sweep { 0%, 100% { transform: translateX(-30%) scaleX(.35); opacity: .25; } 50% { transform: translateX(20%) scaleX(1); opacity: 1; } }
     @keyframes accentGlow { 50% { color: #5d9aff; text-shadow: 0 0 24px rgba(35,105,245,.25); } }
     @keyframes cardIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-    @keyframes titleChar { to { opacity: 1; transform: translateY(0) rotate(0); } }
+    @keyframes titleWord { to { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); } }
     @media (max-width: 700px) {
       .nav { height: 70px; padding: 0 24px; }
       .logo { font-size: 26px; }
@@ -142,32 +141,30 @@
 </head>
 <body>
   <nav class="nav">
-    <a class="logo" href="#">Oxygen<span>TryOn</span></a>
+    <a class="logo" href="#">Oxygen <span>TryOn</span></a>
     <div class="nav-links">
       <a href="#showcase">Showcase</a>
       <a href="#method">Method</a>
       <a href="#authors">Authors</a>
-      <a href="https://arxiv.org/pdf/2607.21694" target="_blank" rel="noreferrer">Paper ↗</a>
-      <a class="github" href="https://github.com/oxygenVision/Oxygen-TryOn" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="https://arxiv.org/pdf/2607.21694" target="_blank" rel="noreferrer">Paper</a>
+      <a class="github" href="https://oxygen-tryon.jd.com/" target="_blank" rel="noreferrer">Demo</a>
     </div>
   </nav>
   <main>
     <header class="hero">
       <div class="hero-mosaic" aria-hidden="true">
-        <img src="assets/multi-4-c1.png" alt="">
-        <img src="assets/multi-4-c2.png" alt="">
-        <img src="assets/multi-4-c3.png" alt="">
-        <img src="assets/multi-4-c4.png" alt="">
-        <img src="assets/multi-4-r.png" alt="">
-        <img src="assets/multi-4-m.png" alt="">
+        <img src="assets/single-2-m.jpg" alt="">
+        <img src="assets/single-2-r.jpg" alt="">
+        <img src="assets/multi-1-m.jpg" alt="">
+        <img src="assets/multi-1-r.jpg" alt="">
       </div>
-      <p class="eyebrow">Technical Report · 2026 · Oxygen AIGC Group &amp; Joy Future Academy, JD</p>
-      <h1 class="hero-title" aria-label="Fashion-native foundation model for any-item try-on."><span class="title-line">Fashion-native foundation</span><span class="title-line">model for <em>any-item</em> try-on.</span></h1>
+      <p class="eyebrow">Oxygen AIGC Group &amp; Joy Future Academy, JD</p>
+      <h1 class="hero-title" aria-label="Fashion-native foundation model for any-item try-on"><span class="title-line">Fashion-native foundation</span><span class="title-line">model for <em>any-item</em> try-on.</span></h1>
       <p class="intro">A unified model for photorealistic, multi-reference virtual try-on across any fashion item.</p>
       <div class="actions">
-        <a class="button primary" href="https://arxiv.org/pdf/2607.21694" target="_blank" rel="noreferrer">Read the paper ↗</a>
-        <a class="button" href="https://github.com/oxygenVision/Oxygen-TryOn" target="_blank" rel="noreferrer">View on GitHub ↗</a>
-        <a class="button" href="https://oxygen-tryon.jd.com/" target="_blank" rel="noreferrer">Demo ↗</a>
+        <a class="button" href="https://arxiv.org/pdf/2607.21694" target="_blank" rel="noreferrer">Read the paper</a>
+        <a class="button" href="https://github.com/oxygenVision/Oxygen-TryOn" target="_blank" rel="noreferrer">View on GitHub</a>
+        <a class="button" href="https://oxygen-tryon.jd.com/" target="_blank" rel="noreferrer">Demo</a>
       </div>
     </header>
     <section id="method">
@@ -191,80 +188,80 @@
       <div class="showcase-subhead"><b>Single-item try-on</b><span>Reference item → Subject → Result</span></div>
       <div class="single-stack">
         <article class="single-case reveal">
-          <figure><img src="assets/single-1-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-1-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-1-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-1-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-1-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-1-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
           <figure><img src="assets/single-2-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-2-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-2-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-2-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-2-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-3-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-3-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-3-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-3-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-3-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-3-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-4-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-4-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-4-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-4-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-4-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-4-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-5-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-5-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-5-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-5-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-5-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-5-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-6-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-6-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-6-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-6-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-6-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-6-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-7-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-7-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-7-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-7-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-7-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-7-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-8-c.png" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-8-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-8-r.png" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-8-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-8-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-8-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
         </article>
       </div>
       <div class="showcase-subhead"><b>Multi-item try-on</b><span>Items → Subject → Result</span></div>
       <div class="case-stack">
         <article class="case reveal">
-          <figure><img src="assets/multi-1-c1.png" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-1-c2.png" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-1-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-1-r.png" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-1-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-1-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-1-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-1-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case reveal">
-          <figure><img src="assets/multi-2-c1.png" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-2-c2.png" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-2-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-2-r.png" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-2-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-2-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-2-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-2-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case case-three reveal">
-          <figure><img src="assets/multi-3-c1.png" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-3-c2.png" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-3-c3.png" alt="Third reference item"><figcaption>Item 03</figcaption></figure>
-          <figure><img src="assets/multi-3-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-3-r.png" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-3-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-3-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-3-c3.jpg" alt="Third reference item"><figcaption>Item 03</figcaption></figure>
+          <figure><img src="assets/multi-3-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-3-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case case-four reveal">
-          <figure><img src="assets/multi-4-c1.png" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-4-c2.png" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-4-c3.png" alt="Third reference item"><figcaption>Item 03</figcaption></figure>
-          <figure><img src="assets/multi-4-c4.png" alt="Fourth reference item"><figcaption>Item 04</figcaption></figure>
-          <figure><img src="assets/multi-4-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-4-r.png" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-4-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-4-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-4-c3.jpg" alt="Third reference item"><figcaption>Item 03</figcaption></figure>
+          <figure><img src="assets/multi-4-c4.jpg" alt="Fourth reference item"><figcaption>Item 04</figcaption></figure>
+          <figure><img src="assets/multi-4-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-4-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case reveal">
-          <figure><img src="assets/multi-5-c1.png" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-5-c2.png" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-5-m.png" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-5-r.png" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-5-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-5-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-5-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-5-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
         </article>
       </div>
     </section>
@@ -308,20 +305,34 @@
     const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('show', entry.isIntersecting)), { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
     const title = document.querySelector('.hero-title');
-    let charIndex = 0;
-    const textNodes = [];
-    const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
-    while (walker.nextNode()) textNodes.push(walker.currentNode);
-    textNodes.forEach(node => {
-      const fragment = document.createDocumentFragment();
-      [...node.textContent].forEach(character => {
-        const span = document.createElement('span');
-        span.className = 'char';
-        span.style.setProperty('--char-index', charIndex++);
-        span.textContent = character === ' ' ? '\u00a0' : character;
-        fragment.appendChild(span);
+    let wordIndex = 0;
+    title.querySelectorAll('.title-line').forEach(line => {
+      const nodes = [...line.childNodes];
+      line.textContent = '';
+      nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              line.appendChild(document.createTextNode(part));
+              return;
+            }
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.style.setProperty('--char-index', wordIndex++);
+            span.textContent = part;
+            line.appendChild(span);
+          });
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          const span = document.createElement('span');
+          span.className = 'char';
+          span.style.setProperty('--char-index', wordIndex++);
+          const em = document.createElement(node.tagName.toLowerCase());
+          em.textContent = node.textContent;
+          span.appendChild(em);
+          line.appendChild(span);
+        }
       });
-      node.replaceWith(fragment);
     });
     new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('animate', entry.isIntersecting)), { threshold: .65 }).observe(title);
     const modal = document.querySelector('.image-modal');
