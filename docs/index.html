@@ -6,7 +6,7 @@
   <title>Oxygen-TryOn — Any-item Virtual Try-On</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root { --ink: #101114; --muted: #6c6f76; --line: #e4e5e8; --blue: #2369f5; --paper: #fafafa; }
     * { box-sizing: border-box; }
@@ -16,7 +16,7 @@
     .nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 92px; padding: 0 clamp(32px, 6vw, 96px); border-bottom: 1px solid rgba(16,17,20,.08); background: rgba(250,250,250,.86); backdrop-filter: blur(16px); }
     .logo { font-weight: 800; font-size: 28px; letter-spacing: -.02em; line-height: 1; }
     .logo span { display: inline-block; vertical-align: baseline; background: linear-gradient(90deg, #2369f5, #6ba3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .nav-links { display: flex; align-items: center; gap: 26px; font-size: 13px; font-weight: 600; }
+    .nav-links { display: flex; align-items: center; gap: 26px; font-size: 16px; font-weight: 600; }
     .nav-links a:not(.github) { color: var(--muted); }
     .github { padding: 10px 15px; border-radius: 8px; color: #fff; background: var(--ink); }
     .hero { position: relative; isolation: isolate; min-height: 580px; padding: 68px clamp(32px, 6vw, 96px) 58px; overflow: hidden; background: #1e355f; color: #fff; text-align: left; }
@@ -36,7 +36,7 @@
     .intro { position: relative; max-width: 650px; margin: 0 auto; color: #51545b; font-size: clamp(16px, 1.8vw, 20px); line-height: 1.65; }
     .hero .intro { max-width: 610px; margin: 0; color: rgba(255,255,255,.82); font-size: 18px; }
     .actions { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; max-width: 720px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.25); }
-    .button { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px; font-size: 14px; font-weight: 700; transition: transform .25s, box-shadow .25s; }
+    .button { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px; font-size: 16px; font-weight: 700; transition: transform .25s, box-shadow .25s; }
     .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16,17,20,.13); }
     .hero .button { border-color: rgba(255,255,255,.85); color: #fff; background: rgba(255,255,255,.12); }
     .hero .button:hover { background: rgba(255,255,255,.22); box-shadow: 0 10px 20px rgba(0,0,0,.2); }
@@ -47,7 +47,8 @@
     .section-head { margin-bottom: 38px; text-align: center; }
     .section-head .section-label { display: block; margin-bottom: 17px; }
     h2 { margin: 0 auto; max-width: 1000px; font-size: clamp(46px, 6.4vw, 82px); line-height: .98; letter-spacing: -.07em; }
-    .abstract { max-width: 960px; margin: 0 auto; color: #41444a; font-size: 17px; line-height: 1.8; text-align: justify; }
+    .abstract { max-width: 960px; margin: 0 auto; color: #3a3d44; font: 400 17px/1.65 Inter, "Helvetica Neue", Helvetica, sans-serif; text-align: justify; letter-spacing: .01em; }
+    .abstract b { font-weight: 700; }
     .key-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 960px; margin: 42px auto 0; }
     .key-point { display: flex; min-height: 150px; padding: 24px 20px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 12px; background: #fff; text-align: center; transition: transform .25s ease, box-shadow .25s ease; }
     .key-point:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(16,17,20,.08); }
@@ -159,8 +160,8 @@
         <img src="assets/multi-1-r.jpg" alt="">
       </div>
       <p class="eyebrow">Oxygen AIGC Group &amp; Joy Future Academy, JD</p>
-      <h1 class="hero-title" aria-label="Fashion-native foundation model for any-item visual try-on"><span class="title-line">Fashion-native foundation</span><span class="title-line">model for <em>any-item</em> visual try-on.</span></h1>
-      <p class="intro">A unified model for photorealistic, multi-reference virtual try-on across any fashion item.</p>
+      <h1 class="hero-title" aria-label="Fashion-Native Foundation Model for Any-Item Virtual Try-On"><span class="title-line">Fashion-Native Foundation</span><span class="title-line">Model for <em>Any-Item</em> Virtual Try-On.</span></h1>
+      <p class="intro">A unified model for photorealistic, multi-reference virtual try-on across any fashion items.</p>
       <div class="actions">
         <a class="button" href="https://arxiv.org/pdf/2607.21694" target="_blank" rel="noreferrer">Read the paper</a>
         <a class="button" href="https://github.com/oxygenVision/Oxygen-TryOn" target="_blank" rel="noreferrer">View on GitHub</a>
