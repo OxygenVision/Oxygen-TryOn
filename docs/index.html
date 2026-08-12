@@ -156,10 +156,10 @@
   <main>
     <header class="hero">
       <div class="hero-mosaic" aria-hidden="true">
-        <img src="assets/single-2-m.jpg" alt="">
-        <img src="assets/single-2-r.jpg" alt="">
-        <img src="assets/multi-1-m.jpg" alt="">
-        <img src="assets/multi-1-r.jpg" alt="">
+        <img src="assets/single-2-m.jpg" alt="" decoding="async" fetchpriority="high">
+        <img src="assets/single-2-r.jpg" alt="" decoding="async" fetchpriority="high">
+        <img src="assets/multi-1-m.jpg" alt="" decoding="async" fetchpriority="high">
+        <img src="assets/multi-1-r.jpg" alt="" decoding="async" fetchpriority="high">
       </div>
       <p class="eyebrow">Oxygen AIGC Group &amp; Joy Future Academy, JD</p>
       <h1 class="hero-title" aria-label="Fashion-Native Foundation Model for Any-Item Virtual Try-On"><span class="title-line">Fashion-Native Foundation</span><span class="title-line">Model for <em>Any-Item</em> Virtual Try-On.</span></h1>
@@ -174,7 +174,7 @@
       <div class="section-head reveal">
         <p class="section-label">01 / Abstract</p>
       </div>
-      <p class="abstract reveal">We present <b>Oxygen-TryOn</b>, a unified foundation model for <b>any-item</b> virtual try-on. Rather than repurposing a general-purpose image editor through prompting — an approach that tends to hallucinate garment details, drift on subject identity, and break down on fine-grained texture — Oxygen-TryOn is <b>fashion-native</b>: it is purpose-built for try-on, powered by a dedicated data engine and try-on-specific training. Given one or more reference items, provided either as clean product shots or as in-the-wild photos of someone already wearing them, together with a single target subject image, the model synthesizes a photorealistic image of that subject wearing the referenced items, spanning virtually any fashion category: clothing, outerwear, accessories, footwear, bags, and beyond. Most prior systems handle only a single garment category in a controlled studio setting, and even recent multi-reference methods remain garment-centric. In contrast, Oxygen-TryOn supports diverse items and real-world scenarios, including full-body and half-body views, a variable number of references, and free multi-item composition, while faithfully preserving both the subject’s identity and each reference item’s fine-grained appearance, from textures and prints to logos and structural silhouettes. Instead of casting try-on as mask-based inpainting, we reformulate it as a multi-reference, understanding-driven generation task: the model reasons about what each item is and how it should be worn, handling occlusion, deformation, and layering rather than merely filling a predefined region, which in turn yields stronger generalization to unseen items and compositions. To unlock this capability, we build a dedicated data engine that collects, manufactures, annotates, and filters high-quality try-on data at scale, and we design a three-stage training recipe comprising continued pre-training (CPT), large-scale supervised fine-tuning (SFT), and reinforcement learning (RL). The RL stage is driven by a hybrid reward mechanism that integrates an in-house try-on reward model with a proprietary, rubric-guided general-purpose model, jointly supervising fine-grained consistency and instruction-level quality. As a by-product, the same model still follows general editing instructions (e.g., pose changes) within a single pass, with no task switching. Across public benchmarks and our in-house Oxygen-TryOn Bench, Oxygen-TryOn achieves state-of-the-art consistency and realism on single-item try-on and leads on multi-item try-on, matching or surpassing both leading proprietary systems (e.g., Nano Banana Pro, GPT-Image-2, Seedream5 Lite) and the strongest open-source models (e.g., FLUX.2). To the best of our knowledge, it is the first system to deliver any-item, multi-reference try-on at this level of fidelity. We further detail the recipe behind the model — the data engine and the CPT–SFT–RL pipeline — to make our design choices transparent and reusable.</p>
+      <p class="abstract reveal">We present <b>Oxygen-TryOn</b>, a unified foundation model for <b>any-item</b> virtual try-on. Rather than repurposing a general-purpose image editor through prompting, which tends to hallucinate garment details, drift on subject identity, and break down on fine-grained texture, Oxygen-TryOn is <b>fashion-native</b>: it is purpose-built for try-on, powered by a dedicated data engine and try-on-specific training. Given one or more reference items, provided either as clean product shots or as in-the-wild photos of someone already wearing them, together with a single target subject image, the model synthesizes a photorealistic image of that subject wearing the referenced items, spanning virtually any fashion category: clothing, outerwear, accessories, footwear, bags, and beyond. Most prior systems handle only a single garment category in a controlled studio setting, and even recent multi-reference methods remain garment-centric. In contrast, Oxygen-TryOn supports diverse items and real-world scenarios, including full-body and half-body views, a variable number of references, and free multi-item composition, while faithfully preserving both the subject’s identity and each reference item’s fine-grained appearance, from textures and prints to logos and structural silhouettes. Instead of casting try-on as mask-based inpainting, we reformulate it as a multi-reference, understanding-driven generation task: the model reasons about what each item is and how it should be worn, handling occlusion, deformation, and layering rather than merely filling a predefined region, which in turn yields stronger generalization to unseen items and compositions. To unlock this capability, we build a dedicated data engine that collects, manufactures, annotates, and filters high-quality try-on data at scale, and we design a three-stage training recipe comprising continued pre-training (CPT), large-scale supervised fine-tuning (SFT), and reinforcement learning (RL). The RL stage is driven by a hybrid reward mechanism that integrates an in-house try-on reward model with a proprietary, rubric-guided general-purpose model, jointly supervising fine-grained consistency and instruction-level quality. As a by-product, the same model still follows general editing instructions (e.g., pose changes) within a single pass, with no task switching. Across public benchmarks and our in-house Oxygen-TryOn Bench, Oxygen-TryOn achieves state-of-the-art consistency and realism on single-item try-on and leads on multi-item try-on, matching or surpassing both leading proprietary systems (e.g., Nano Banana Pro, GPT-Image-2, Seedream5 Lite) and the strongest open-source models (e.g., FLUX.2). To the best of our knowledge, it is the first system to deliver any-item, multi-reference try-on at this level of fidelity. We further detail the recipe behind the model, namely the data engine and the CPT–SFT–RL pipeline, to make our design choices transparent and reusable.</p>
       <div class="key-points reveal">
         <article class="key-point"><b>Any item, any combination</b><p>Garments, outerwear, accessories, shoes, bags, and more; from a single item to free multi-item outfits, with natural layering and occlusion.</p></article>
         <article class="key-point"><b>Heterogeneous references</b><p>Clean product shots or in-the-wild worn-on photos; full- or half-body subjects with a variable number of references.</p></article>
@@ -191,80 +191,80 @@
       <div class="showcase-subhead"><b>Single-item try-on</b><span>Reference item → Subject → Result</span></div>
       <div class="single-stack">
         <article class="single-case reveal">
-          <figure><img src="assets/single-1-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-1-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-1-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-1-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-1-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-1-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-2-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-2-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-2-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-2-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-2-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-2-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-3-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-3-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-3-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-3-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-3-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-3-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-4-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-4-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-4-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-4-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-4-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-4-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-5-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-5-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-5-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-5-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-5-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-5-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-6-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-6-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-6-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-6-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-6-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-6-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-7-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-7-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-7-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-7-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-7-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-7-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="single-case reveal">
-          <figure><img src="assets/single-8-c.jpg" alt="Reference garment"><figcaption>Reference item</figcaption></figure>
-          <figure><img src="assets/single-8-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/single-8-r.jpg" alt="Try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/single-8-c.jpg" alt="Reference garment" loading="lazy" decoding="async"><figcaption>Reference item</figcaption></figure>
+          <figure><img src="assets/single-8-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/single-8-r.jpg" alt="Try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
       </div>
       <div class="showcase-subhead"><b>Multi-item try-on</b><span>Items → Subject → Result</span></div>
       <div class="case-stack">
         <article class="case reveal">
-          <figure><img src="assets/multi-1-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-1-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-1-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-1-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-1-c1.jpg" alt="First reference item" loading="lazy" decoding="async"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-1-c2.jpg" alt="Second reference item" loading="lazy" decoding="async"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-1-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-1-r.jpg" alt="Multi-item try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case reveal">
-          <figure><img src="assets/multi-2-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-2-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-2-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-2-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-2-c1.jpg" alt="First reference item" loading="lazy" decoding="async"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-2-c2.jpg" alt="Second reference item" loading="lazy" decoding="async"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-2-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-2-r.jpg" alt="Multi-item try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case case-three reveal">
-          <figure><img src="assets/multi-3-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-3-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-3-c3.jpg" alt="Third reference item"><figcaption>Item 03</figcaption></figure>
-          <figure><img src="assets/multi-3-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-3-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-3-c1.jpg" alt="First reference item" loading="lazy" decoding="async"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-3-c2.jpg" alt="Second reference item" loading="lazy" decoding="async"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-3-c3.jpg" alt="Third reference item" loading="lazy" decoding="async"><figcaption>Item 03</figcaption></figure>
+          <figure><img src="assets/multi-3-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-3-r.jpg" alt="Multi-item try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case case-four reveal">
-          <figure><img src="assets/multi-4-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-4-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-4-c3.jpg" alt="Third reference item"><figcaption>Item 03</figcaption></figure>
-          <figure><img src="assets/multi-4-c4.jpg" alt="Fourth reference item"><figcaption>Item 04</figcaption></figure>
-          <figure><img src="assets/multi-4-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-4-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-4-c1.jpg" alt="First reference item" loading="lazy" decoding="async"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-4-c2.jpg" alt="Second reference item" loading="lazy" decoding="async"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-4-c3.jpg" alt="Third reference item" loading="lazy" decoding="async"><figcaption>Item 03</figcaption></figure>
+          <figure><img src="assets/multi-4-c4.jpg" alt="Fourth reference item" loading="lazy" decoding="async"><figcaption>Item 04</figcaption></figure>
+          <figure><img src="assets/multi-4-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-4-r.jpg" alt="Multi-item try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
         <article class="case reveal">
-          <figure><img src="assets/multi-5-c1.jpg" alt="First reference item"><figcaption>Item 01</figcaption></figure>
-          <figure><img src="assets/multi-5-c2.jpg" alt="Second reference item"><figcaption>Item 02</figcaption></figure>
-          <figure><img src="assets/multi-5-m.jpg" alt="Target subject"><figcaption>Subject</figcaption></figure>
-          <figure class="result"><img src="assets/multi-5-r.jpg" alt="Multi-item try-on result"><figcaption>Result</figcaption></figure>
+          <figure><img src="assets/multi-5-c1.jpg" alt="First reference item" loading="lazy" decoding="async"><figcaption>Item 01</figcaption></figure>
+          <figure><img src="assets/multi-5-c2.jpg" alt="Second reference item" loading="lazy" decoding="async"><figcaption>Item 02</figcaption></figure>
+          <figure><img src="assets/multi-5-m.jpg" alt="Target subject" loading="lazy" decoding="async"><figcaption>Subject</figcaption></figure>
+          <figure class="result"><img src="assets/multi-5-r.jpg" alt="Multi-item try-on result" loading="lazy" decoding="async"><figcaption>Result</figcaption></figure>
         </article>
       </div>
     </section>
