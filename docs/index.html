@@ -16,9 +16,9 @@
     .nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 92px; padding: 0 clamp(32px, 6vw, 96px); border-bottom: 1px solid rgba(16,17,20,.08); background: rgba(250,250,250,.86); backdrop-filter: blur(16px); }
     .logo { font-weight: 800; font-size: 28px; letter-spacing: -.02em; line-height: 1; }
     .logo span { display: inline-block; vertical-align: baseline; background: linear-gradient(90deg, #2369f5, #6ba3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .nav-links { display: flex; align-items: center; gap: 26px; font-size: 16px; font-weight: 600; }
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 20px; font-weight: 600; }
     .nav-links a:not(.github) { color: var(--muted); }
-    .github { padding: 10px 15px; border-radius: 8px; color: #fff; background: var(--ink); }
+    .github { padding: 12px 24px; border-radius: 9px; color: #fff; background: var(--ink); }
     .hero { position: relative; isolation: isolate; min-height: 580px; padding: 68px clamp(32px, 6vw, 96px) 58px; overflow: hidden; background: #1e355f; color: #fff; text-align: left; }
     .hero::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgba(15,35,75,.88) 0%, rgba(18,42,86,.72) 38%, rgba(31,78,137,.2) 74%, rgba(38,100,181,.16) 100%); }
     .hero::after { position: absolute; z-index: 3; inset: auto 0 0; height: 2px; background: linear-gradient(90deg, transparent, #5d9aff, transparent); content: ""; animation: sweep 4s ease-in-out infinite; }
@@ -35,8 +35,8 @@
     h1 em { font-style: normal; color: var(--blue); animation: accentGlow 3s ease-in-out infinite; }
     .intro { position: relative; max-width: 650px; margin: 0 auto; color: #51545b; font-size: clamp(16px, 1.8vw, 20px); line-height: 1.65; }
     .hero .intro { max-width: 610px; margin: 0; color: rgba(255,255,255,.82); font-size: 18px; }
-    .actions { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; max-width: 720px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.25); }
-    .button { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px; font-size: 16px; font-weight: 700; transition: transform .25s, box-shadow .25s; }
+    .actions { position: relative; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; max-width: 780px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.25); }
+    .button { display: inline-flex; align-items: center; gap: 12px; padding: 17px 30px; border: 1px solid var(--ink); border-radius: 9px; font-size: 20px; font-weight: 700; transition: transform .25s, box-shadow .25s; }
     .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16,17,20,.13); }
     .hero .button { border-color: rgba(255,255,255,.85); color: #fff; background: rgba(255,255,255,.12); }
     .hero .button:hover { background: rgba(255,255,255,.22); box-shadow: 0 10px 20px rgba(0,0,0,.2); }
@@ -89,10 +89,12 @@
     .image-modal .previous { left: 24px; }
     .image-modal .next { right: 24px; }
     .authors-content { max-width: 960px; margin: 0 auto; }
-    .author-block { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: center; padding: 30px 0; border-top: 1px solid var(--line); }
+    .author-block { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; padding: 30px 0; border-top: 1px solid var(--line); }
     .author-block:first-child { border-top: 0; }
     .author-block b { display: block; margin: 0; color: var(--blue); font: 500 15px/1.85 "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
-    .author-block p { margin: 0; color: #282b31; font: 400 18px/1.85 "Times New Roman", Times, serif; }
+    .author-block p { margin: 0; color: #282b31; font: 400 17px/1.9 Inter, "Helvetica Neue", Helvetica, sans-serif; }
+    .author-legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 14px; color: var(--muted); font: 400 13px/1.5 Inter, "Helvetica Neue", Helvetica, sans-serif; }
+    .author-legend i { font-style: normal; font-weight: 700; color: var(--blue); }
     .bibtex-wrap { position: relative; }
     .bibtex { margin: 0; padding: 22px 94px 22px 22px; overflow-wrap: anywhere; border-left: 3px solid var(--blue); background: #f0f4fc; color: #26303e; font: 12px/1.7 "DM Mono", monospace; white-space: pre-wrap; }
     .copy-bibtex { position: absolute; z-index: 1; top: 12px; right: 12px; padding: 9px 13px; border: 0; border-radius: 0; background: var(--ink); color: #fff; cursor: pointer; font: 600 11px Manrope, sans-serif; transition: transform .2s ease, background .2s ease; }
@@ -172,14 +174,14 @@
       <div class="section-head reveal">
         <p class="section-label">01 / Abstract</p>
       </div>
-      <p class="abstract reveal">We present <b>Oxygen-TryOn</b>, a unified foundation model for <b>any-item</b> virtual try-on. Rather than repurposing a general-purpose image editor through prompting—-an approach that tends to hallucinate garment details, drift on subject identity, and break down on fine-grained texture—-Oxygen-TryOn is <b>fashion-native</b>: it is purpose-built for try-on, powered by a dedicated data engine and try-on-specific training. Given one or more reference items, provided either as clean product shots or as in-the-wild photos of someone already wearing them, together with a single target subject image, the model synthesizes a photorealistic image of that subject wearing the referenced items, spanning virtually any fashion category: clothing, outerwear, accessories, footwear, bags, and beyond. Most prior systems handle only a single garment category in a controlled studio setting, and even recent multi-reference methods remain garment-centric. In contrast, Oxygen-TryOn supports diverse items and real-world scenarios, including full-body and half-body views, a variable number of references, and free multi-item composition, while faithfully preserving both the subject’s identity and each reference item’s fine-grained appearance, from textures and prints to logos and structural silhouettes. Instead of casting try-on as mask-based inpainting, we reformulate it as a multi-reference, understanding-driven generation task: the model reasons about what each item is and how it should be worn, handling occlusion, deformation, and layering rather than merely filling a predefined region, which in turn yields stronger generalization to unseen items and compositions. To unlock this capability, we build a dedicated data engine that collects, manufactures, annotates, and filters high-quality try-on data at scale, and we design a three-stage training recipe comprising continued pre-training (CPT), large-scale supervised fine-tuning (SFT), and reinforcement learning (RL). The RL stage is driven by a hybrid reward mechanism that integrates an in-house try-on reward model with a proprietary, rubric-guided general-purpose model, jointly supervising fine-grained consistency and instruction-level quality. As a by-product, the same model still follows general editing instructions (e.g., pose changes) within a single pass, with no task switching. Across public benchmarks and our in-house Oxygen-TryOn Bench, Oxygen-TryOn achieves state-of-the-art consistency and realism on single-item try-on and leads on multi-item try-on, matching or surpassing both leading proprietary systems (e.g., Nano Banana Pro, GPT-Image-2, Seedream5 Lite) and the strongest open-source models (e.g., FLUX.2). To the best of our knowledge, it is the first system to deliver any-item, multi-reference try-on at this level of fidelity. We further detail the recipe behind the model—-the data engine and the CPT–SFT–RL pipeline—-to make our design choices transparent and reusable.</p>
+      <p class="abstract reveal">We present <b>Oxygen-TryOn</b>, a unified foundation model for <b>any-item</b> virtual try-on. Rather than repurposing a general-purpose image editor through prompting — an approach that tends to hallucinate garment details, drift on subject identity, and break down on fine-grained texture — Oxygen-TryOn is <b>fashion-native</b>: it is purpose-built for try-on, powered by a dedicated data engine and try-on-specific training. Given one or more reference items, provided either as clean product shots or as in-the-wild photos of someone already wearing them, together with a single target subject image, the model synthesizes a photorealistic image of that subject wearing the referenced items, spanning virtually any fashion category: clothing, outerwear, accessories, footwear, bags, and beyond. Most prior systems handle only a single garment category in a controlled studio setting, and even recent multi-reference methods remain garment-centric. In contrast, Oxygen-TryOn supports diverse items and real-world scenarios, including full-body and half-body views, a variable number of references, and free multi-item composition, while faithfully preserving both the subject’s identity and each reference item’s fine-grained appearance, from textures and prints to logos and structural silhouettes. Instead of casting try-on as mask-based inpainting, we reformulate it as a multi-reference, understanding-driven generation task: the model reasons about what each item is and how it should be worn, handling occlusion, deformation, and layering rather than merely filling a predefined region, which in turn yields stronger generalization to unseen items and compositions. To unlock this capability, we build a dedicated data engine that collects, manufactures, annotates, and filters high-quality try-on data at scale, and we design a three-stage training recipe comprising continued pre-training (CPT), large-scale supervised fine-tuning (SFT), and reinforcement learning (RL). The RL stage is driven by a hybrid reward mechanism that integrates an in-house try-on reward model with a proprietary, rubric-guided general-purpose model, jointly supervising fine-grained consistency and instruction-level quality. As a by-product, the same model still follows general editing instructions (e.g., pose changes) within a single pass, with no task switching. Across public benchmarks and our in-house Oxygen-TryOn Bench, Oxygen-TryOn achieves state-of-the-art consistency and realism on single-item try-on and leads on multi-item try-on, matching or surpassing both leading proprietary systems (e.g., Nano Banana Pro, GPT-Image-2, Seedream5 Lite) and the strongest open-source models (e.g., FLUX.2). To the best of our knowledge, it is the first system to deliver any-item, multi-reference try-on at this level of fidelity. We further detail the recipe behind the model — the data engine and the CPT–SFT–RL pipeline — to make our design choices transparent and reusable.</p>
       <div class="key-points reveal">
         <article class="key-point"><b>Any item, any combination</b><p>Garments, outerwear, accessories, shoes, bags, and more; from a single item to free multi-item outfits, with natural layering and occlusion.</p></article>
-        <article class="key-point"><b>Heterogeneous references</b><p>Accepts clean product shots and in-the-wild worn-on photos; full- or half-body subjects with a variable number of references.</p></article>
-        <article class="key-point"><b>Faithful preservation</b><p>Keeps both the subject’s identity and the referenced items’ appearance intact.</p></article>
+        <article class="key-point"><b>Heterogeneous references</b><p>Clean product shots or in-the-wild worn-on photos; full- or half-body subjects with a variable number of references.</p></article>
+        <article class="key-point"><b>Faithful preservation</b><p>Both the subject’s identity and each referenced item’s appearance, preserved intact.</p></article>
         <article class="key-point"><b>Built-in editing</b><p>General instruction-based edits, such as pose changes, within the same generation pass, with no second model or pass.</p></article>
-        <article class="key-point"><b>Cross-domain generalization</b><p>Even dresses stylized 3D avatars, illustrated characters, statues, or posters while respecting the original style and geometry.</p></article>
-        <article class="key-point"><b>State-of-the-art</b><p>Leads single-item consistency and realism, surpassing Nano Banana Pro, GPT-Image-2, Seedream5 Lite, and FLUX.2.</p></article>
+        <article class="key-point"><b>Cross-domain generalization</b><p>Stylized 3D avatars, illustrated characters, statues, or posters — dressed while respecting the original style and geometry.</p></article>
+        <article class="key-point"><b>State-of-the-art</b><p>Best-in-class single-item consistency and realism, surpassing Nano Banana Pro, GPT-Image-2, Seedream5 Lite, and FLUX.2.</p></article>
       </div>
     </section>
     <section id="results" class="gallery-section">
@@ -273,7 +275,10 @@
       <div class="authors-content reveal">
         <div class="author-block">
           <b>Core Contributors</b>
-          <p>Yong Liu*, Xiaolong Fu*, Zihang Xu, Wen Xue, Xueheng Li, Lin Song, Yuan Zhang, Chuyang Zhao, Haoyang Huang, Nan Duan, Yipeng Sun†, Yan Li, Simiu Gu.</p>
+          <div class="author-names">
+            <p>Yong Liu*, Xiaolong Fu*, Zihang Xu, Wen Xue, Xueheng Li, Lin Song, Yuan Zhang, Chuyang Zhao, Haoyang Huang, Nan Duan, Yipeng Sun†, Yan Li, Simiu Gu.</p>
+            <div class="author-legend"><span><i>*</i> Equal contribution</span><span><i>†</i> Corresponding author</span></div>
+          </div>
         </div>
         <div class="author-block">
           <b>BibTeX</b>
