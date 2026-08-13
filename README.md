@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/imgs/ME1781620872394.png" alt="Oxygen-TryOn" width="420">
+  <img src="src/imgs/oxygen.png" alt="Oxygen-TryOn" width="420">
 </p>
 
 <h3 align="center">A Fashion-Native Foundation Model for Any-item 
